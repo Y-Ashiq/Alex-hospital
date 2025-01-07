@@ -1,20 +1,19 @@
-import pkg from 'pg';
-const {Pool} = pkg;
-let pool;
-try {
-   pool =new Pool({
-      host: 'localhost',
-      database: 'api',
-      password: 'password',
-      port: 5432,
-    })
-    console.log("database connected");
-    
-} catch (error) {
+import { Sequelize } from 'sequelize';
 
-   console.log(error);
-   
-   
-}
+const sequelize = new Sequelize('alex_hospital', 'admin', 'admin', {
+  host: 'localhost',
+  dialect: 'postgres',  
+  logging: false,       
+});
 
-export default pool
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Database connected successfully");
+  })
+  .catch((error) => {
+    console.log("error" + error);
+  });
+
+export default sequelize;
