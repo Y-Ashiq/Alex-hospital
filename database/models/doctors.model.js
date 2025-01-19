@@ -14,8 +14,12 @@ const doctorSchema = sequelize.define("doctors", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  availableDates: {
-    type: DataTypes.DATE,
+  available_date_from: {
+    type: DataTypes.ARRAY(DataTypes.DATE),
+    allowNull: false,
+  },
+  available_date_to: {
+    type: DataTypes.ARRAY(DataTypes.DATE),
     allowNull: false,
   },
 });

@@ -6,13 +6,15 @@ import express from "express";
 import sequelize from "./database/DBconnection.js";
 import { AppError } from "./src/util/AppError.js";
 
+import { bootstrap } from "./src/util/bootstrap.js";
+
 export const app = express();
 const port = 3000;
 
 sequelize.sync();
 
 app.use(express.json());
-
+bootstrap(app)
 /**
  bootstrap for routing */
 
